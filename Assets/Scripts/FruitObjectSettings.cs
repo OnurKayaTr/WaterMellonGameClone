@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Create FruitObjectSettings", fileName = "FruitObjectSettings", order = 0)] 
-public class FruitObjectSettings : ScriptableObject 
+[CreateAssetMenu(menuName = "Create FruitObjectSettings", fileName = "FruitObjectSettings", order = 0)]
+public class FruitObjectSettings : ScriptableObject
 {
     [SerializeField] private List<Sprite> sprites;
     [SerializeField] private List<float> scales;
@@ -15,18 +14,19 @@ public class FruitObjectSettings : ScriptableObject
     {
         if (index < 0 || index >= sprites.Count)
         {
-
-            Debug.LogError("Out of Range");
+            Debug.LogError("Index is out of range.");
+            return null;
         }
         return sprites[index];
     }
+
     public float GetScale(int index)
     {
-        if (index < 0 || index >= scales.Count) {
-
-            Debug.LogError("Out of Range");
+        if (index < 0 || index >= scales.Count)
+        {
+            Debug.LogError("Index is out of range.");
+            return 1f;
         }
-
         return scales[index];
     }
 
@@ -37,9 +37,6 @@ public class FruitObjectSettings : ScriptableObject
         for (int i = 0; i < sprites.Count; i++)
         {
             scales.Add((i + 1) * .25f);
-
         }
     }
-
-
 }
